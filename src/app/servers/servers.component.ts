@@ -15,23 +15,38 @@ export class ServersComponent implements OnInit {
   allowUserName = false;
   serverCreationStatus = 'No server was created!';
   serverName ='Testserver';
-  userName = '';
+  serverCreated = false;
+  servers = ['Testserver', 'Testserver 2'];
+
+  // assignment 2
+  // userName = '';
+  secretCode = false;
+  myArray = [];
 
   constructor() { 
     setTimeout(() => {
       this.allowNewServer = true;
     }, 2000)
+    
   }
 
   ngOnInit() {
   }
 
   onCreateServer() {
+    this.serverCreated = true;
+    this.servers.push(this.serverName);
     this.serverCreationStatus = 'Server was created! Name is ' + this.serverName;
   }
 
   onUpdateServerName(event: any) {
     this.serverName = (<HTMLInputElement>event.target).value;
+  }
+
+  onToggleSecret() {
+    this.secretCode = !this.secretCode;
+    // this.myArray.push(this.myArray.length + 1);
+    this.myArray.push(new Date());
   }
 
 }

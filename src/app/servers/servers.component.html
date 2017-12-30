@@ -13,10 +13,41 @@
   [disabled]="!allowNewServer"
   (click)="onCreateServer()">Add Server</button>
 <!-- <p [innerText]="allowNewServer"></p> -->
-<p>{{ serverCreationStatus }}</p>
-<app-server></app-server>
-<app-server></app-server> 
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<p *ngIf="serverCreated; else noServer">Server was created, server name is {{ serverName }}</p>
+<app-server *ngFor="let server of servers"></app-server>
+
 <hr>
+<label>Assignment 3</label>
+<br>
+<button 
+  class="btn btn-success"
+  (click)="onToggleSecret()">Display Details</button>
+<p *ngIf="secretCode">Secret Code: Angular</p>
+<div 
+  *ngFor="let list of myArray; let i = index"
+  [ngStyle]="{backgroundColor: i >= 4 ? 'blue': 'transparent'}"
+  [ngClass]="{'white-text': i >= 4}"
+  >{{ list }}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <hr>
 <label>Assignment 2</label>
 <input 
   type="text"
@@ -27,4 +58,4 @@
 <button
   class="btn btn-info"
   [disabled]="userName === ''"
-  (click)="userName = ''">reset</button>
+  (click)="userName = ''">reset</button> -->
